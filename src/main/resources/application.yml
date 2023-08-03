@@ -16,10 +16,6 @@ spring:
             allowedMethods:
               - GET
               - POST
-              
-      discovery:
-        locator:
-          enabled: true
           
       routes:
       - id: USERSERVICE-MS
@@ -30,12 +26,12 @@ spring:
       - id: FRONTEND-MS
         uri: lb://FRONTEND-MS
         predicates:
-         - Path=/api/**
+         - Path=/**
          
       - id: ENCRYPTDECRYPT-MS
         uri: lb://ENCRYPTDECRYPT-MS
         predicates:
-         - Path=/**
+         - Path=/api/**
          
 eureka:
   instance:
@@ -48,10 +44,3 @@ eureka:
     
     service-url:
      defaultZone: http://localhost:8761/eureka
-
-management:
-  endpoint:
-    gateway:
-      enabled: true
-         
-    
