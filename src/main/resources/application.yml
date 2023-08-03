@@ -33,10 +33,7 @@ spring:
         predicates:
          - Path=/api/**
          
-eureka:
-  instance:
-    prefer-ip-address: true
-    
+eureka:   
   client:
     fetch-registry: true
     
