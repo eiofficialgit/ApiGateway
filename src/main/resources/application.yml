@@ -23,11 +23,6 @@ spring:
         predicates:
          - Path=/exuser/**
          
-      - id: FRONTEND-MS
-        uri: lb://FRONTEND-MS
-        predicates:
-         - Path=/skyexchange/**
-         
       - id: ENCRYPTDECRYPT-MS
         uri: lb://ENCRYPTDECRYPT-MS
         predicates:
