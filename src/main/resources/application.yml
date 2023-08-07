@@ -28,7 +28,16 @@ spring:
         predicates:
          - Path=/api/**
          
-eureka:   
+      - id: FRONTEND-MS
+        uri: lb://FRONTEND-MS
+        predicates:
+         - Path=/**
+         
+eureka:
+
+  instance:
+    prefer-ip-address: true  
+      
   client:
     fetch-registry: true
     
