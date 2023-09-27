@@ -8,7 +8,7 @@ spring:
   cloud:
     gateway:
       globalcors:
-        cors-configurations:
+        cors-configurations:        
           '[/**]':
             allowedOrigins: "*"
             allowedHeaders:
@@ -16,7 +16,7 @@ spring:
             allowedMethods:
               - GET
               - POST
-          
+      
       routes:
       - id: USERSERVICE-MS
         uri: lb://USERSERVICE-MS
@@ -27,6 +27,11 @@ spring:
         uri: lb://ENCRYPTDECRYPT-MS
         predicates:
          - Path=/api/**
+         
+      - id: USERPANEL-MS
+        uri: lb://USERPANEL-MS
+        predicates:
+         - Path=/user/**
          
       - id: FRONTEND-MS
         uri: lb://FRONTEND-MS
