@@ -22,21 +22,41 @@ spring:
         uri: lb://USERSERVICE-MS
         predicates:
          - Path=/exuser/**
+        filters:
+            - name: CircuitBreaker
+              args:
+                name: USERSERVICE-MS
+                fallbackuri: forward:/userServiceFallBack 
          
       - id: ENCRYPTDECRYPT-MS
         uri: lb://ENCRYPTDECRYPT-MS
         predicates:
          - Path=/api/**
+        filters:
+            - name: CircuitBreaker
+              args:
+                name: ENCRYPTDECRYPT-MS
+                fallbackuri: forward:/encryptionServiceFallBack 
          
       - id: USERPANEL-MS
         uri: lb://USERPANEL-MS
         predicates:
          - Path=/user/**
+        filters:
+            - name: CircuitBreaker
+              args:
+                name: USERPANEL-MS
+                fallbackuri: forward:/userPanelFallBack 
          
       - id: FRONTEND-MS
         uri: lb://FRONTEND-MS
         predicates:
          - Path=/**
+        filters:
+            - name: CircuitBreaker
+              args:
+                name: FRONTEND-MS
+                fallbackuri: forward:/adminPanelFallBack 
          
 eureka:
 
